@@ -7,6 +7,6 @@ export default {
     '.+\\.ts$': 'ts-jest'
   },
   testMatch: [
-    '<rootDir>/src/**/*spect.ts'
+    '<rootDir>/src/**/*spec.ts'
   ]
 }
