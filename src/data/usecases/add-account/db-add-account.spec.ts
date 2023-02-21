@@ -3,7 +3,7 @@ import { DbAddAccount } from './db-add-account'
 
 interface SutTypes {
   sut: DbAddAccount
-  encrypterStub: Encrypter
+  encryptStub: Encrypter
 }
 
 const makeEncrypter = (): Encrypter => {
@@ -15,7 +15,7 @@ const makeEncrypter = (): Encrypter => {
   return new EncryptStub()
 }
 
-const makeSut = (): any => {
+const makeSut = (): SutTypes => {
   const encryptStub = makeEncrypter()
   const sut = new DbAddAccount(encryptStub)
   return {
