@@ -3,11 +3,11 @@ import app from '../config/app'
 import { MongoHelper } from '../../infra/db/mongodb/helpers/mongo-helper'
 
 beforeAll(async () => {
-  await MongoHelper.connect(process.env.MONGO_URL || '')
+  await MongoHelper.connect(process.env.MONGO_URL)
 })
 
 beforeEach(async () => {
-  const accountCollection = MongoHelper.getCollection('accounts')
+  const accountCollection = await MongoHelper.getCollection('accounts')
   await accountCollection.deleteMany({})
 })
 
@@ -21,7 +21,7 @@ describe('SignUp Routes', () => {
       .post('/api/signup')
       .send({
         name: 'José Henrique',
-        email: 'jose.gmail.com',
+        email: 'jose@gmail.com',
         password: '123',
         passwordConfirmation: '123'
       })
